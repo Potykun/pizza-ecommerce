@@ -2,7 +2,7 @@ import { Sort } from "./components/Sort";
 import { Categories } from "./components/Categories";
 import { Header } from "./components/Header";
 import "./scss/app.scss";
-
+import pizzas from "./assets/pizza.json";
 import React from "react";
 import PizzaBLock from "./components/PizzaBLock";
 
@@ -18,10 +18,17 @@ function App() {
 					</div>
 					<h2 className="content__title">Все пиццы</h2>
 					<div className="content__items">
-						<PizzaBLock
-							title={"Mexico"}
-							price={"350"}
-						></PizzaBLock>
+						{pizzas.map((pizza) => {
+							return (
+								<PizzaBLock
+									title={pizza.title}
+									price={pizza.price}
+									imageURL={pizza.imageUrl}
+									sizes={pizza.sizes}
+									types={pizza.types}
+								></PizzaBLock>
+							);
+						})}
 					</div>
 				</div>
 			</div>
