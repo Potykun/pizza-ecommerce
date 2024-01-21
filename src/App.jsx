@@ -18,14 +18,16 @@ function App() {
 					</div>
 					<h2 className="content__title">Все пиццы</h2>
 					<div className="content__items">
-						{pizzas.map((pizza) => {
+						{pizzas.map((pizza, i) => {
 							return (
 								<PizzaBLock
-									title={pizza.title}
-									price={pizza.price}
-									imageURL={pizza.imageUrl}
-									sizes={pizza.sizes}
-									types={pizza.types}
+									key={i}
+									// title={pizza.title}
+									// price={pizza.price}
+									// imageURL={pizza.imageUrl}
+									// sizes={pizza.sizes}
+									// types={pizza.types}
+									{...pizza}
 								></PizzaBLock>
 							);
 						})}

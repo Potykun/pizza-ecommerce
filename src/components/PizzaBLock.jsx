@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function PizzaBLock({ title, price, imageURL, sizes, types }) {
+export default function PizzaBLock({ title, price, imageUrl, sizes, types }) {
 	const tymeNames = ["тонкое", "традиционное"];
 	const [activeType, setActiveType] = useState(0);
 	const [activeSize, setActiveSize] = useState(0);
@@ -14,7 +14,7 @@ export default function PizzaBLock({ title, price, imageURL, sizes, types }) {
 		<div className="pizza-block">
 			<img
 				className="pizza-block__image"
-				src={imageURL}
+				src={imageUrl}
 				alt="Pizza"
 			/>
 			<h4 className="pizza-block__title">{title}</h4>
