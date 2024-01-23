@@ -1,6 +1,6 @@
 import React from "react";
 import logoPizza from "../assets/img/pizza-logo.svg";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Header() {
 	return (
@@ -13,12 +13,12 @@ export function Header() {
 						alt="Pizza logo"
 					/>
 					<div>
-						<Link to="/home">React Pizza</Link>
+						<a href="/home">React Pizza</a>
 						<h1>React Pizza</h1>
 						<p>самая вкусная пицца во вселенной</p>
 					</div>
 				</div>
-				<Link to="/cart">About</Link>
+				<Link to="/notfound">notfound</Link>
 				<div className="header__cart">
 					<a
 						href="/cart.html"

@@ -1,17 +1,17 @@
 import { Header } from "./components/Header";
 import "./scss/app.scss";
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
 function App() {
 	//
 	return (
-		<BrowserRouter>
+		<Router>
 			<div className="wrapper">
 				<Header></Header>
 				<Switch>
-					<Route path="/cart">
+					<Route path="/notfound">
 						<NotFound></NotFound>
 					</Route>
 					<Route path="/home">
@@ -19,7 +19,7 @@ function App() {
 					</Route>
 				</Switch>
 			</div>
-		</BrowserRouter>
+		</Router>
 	);
 }
 
