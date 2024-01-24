@@ -12,6 +12,7 @@ export default function Home() {
 			.then((res) => res.json())
 			.then((arr) => setItems(arr))
 			.then(() => setIsLoading(true));
+		window.scrollTo(0, 0);
 	}, []);
 	return (
 		<div className="content">

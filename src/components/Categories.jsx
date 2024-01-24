@@ -9,7 +9,7 @@ export function Categories() {
 	const categories = ["all", "meat", "vegan", "greal", "spicy", "closed"];
 	return (
 		<div className="categories">
-			<ul>
+			<ul className="categories__list">
 				{categories.map((item, index) => {
 					return (
 						<ItemCategory
