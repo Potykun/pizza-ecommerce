@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import ItemCategory from "./ItemCategory";
 
-export function Categories() {
-	const [activeIndex, setActicveInxdex] = useState(1);
-	const onClickCategory = (index) => {
-		setActicveInxdex(index);
-	};
+export function Categories({ categoryId, setCategoryId }) {
+	// const [activeIndex, setActicveInxdex] = useState(1);
+	// const onClickCategory = (index) => {
+	// 	setCategoryId(index);
+	// };
 	const categories = ["all", "meat", "vegan", "greal", "spicy", "closed"];
 	return (
 		<div className="categories">
@@ -14,8 +14,8 @@ export function Categories() {
 					return (
 						<ItemCategory
 							key={index}
-							activeIndex={activeIndex}
-							onClickCategory={onClickCategory}
+							activeIndex={categoryId}
+							onClickCategory={(index) => setCategoryId(index)}
 							index={index}
 							item={item}
 						></ItemCategory>
