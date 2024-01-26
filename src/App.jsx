@@ -3,20 +3,28 @@ import "./scss/app.scss";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Card from "./pages/Card";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
+	const [searchValue, setSearchValue] = useState();
 	//
 	return (
 		<Router>
 			<div className="wrapper">
-				<Header></Header>
+				<Header
+					searchValue={searchValue}
+					setSearchValue={setSearchValue}
+				></Header>
 				<Switch>
 					<Route path="/card">
 						<Card></Card>
 					</Route>
 					<Route path="/home">
-						<Home></Home>
+						<Home
+							searchValue={searchValue}
+							setSearchValue={setSearchValue}
+						></Home>
 					</Route>
 					<Route path="*">
 						<NotFound></NotFound>
