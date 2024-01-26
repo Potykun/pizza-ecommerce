@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Sort } from "../components/Sort";
 import { Categories } from "../components/Categories";
 import PizzaBLock from "../components/PizzaBlock/PizzaBLock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Paginnation from "../components/Paginnation/Paginnation";
+import { SearchContext } from "../App";
 
-export default function Home({ searchValue, setSearchValue }) {
+export default function Home() {
 	const [items, setItems] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const [categoryId, setCategoryId] = useState(0);
@@ -15,6 +16,7 @@ export default function Home({ searchValue, setSearchValue }) {
 		sort: "rating",
 		how: "desk",
 	});
+	const { searchValue } = useContext(SearchContext);
 	// console.log(sortType);
 	const skeleton = [...new Array(6)].map((_, i) => (
 		<Skeleton key={i}></Skeleton>
