@@ -1,21 +1,23 @@
 import React, { useState } from "react";
-
-export function Sort({ sortType, setSortType }) {
+import { useDispatch, useSelector } from "react-redux";
+import { setSort } from "../redux/slices/filterSlice";
+const list = [
+	{ name: "популярности top", sortProperty: "rating", how: "desc" },
+	{ name: "популярности low", sortProperty: "rating", how: "asc" },
+	{ name: "цене top", sortProperty: "price", how: "desc" },
+	{ name: "цене low", sortProperty: "price", how: "asc" },
+	{ name: "алфавиту top", sortProperty: "title", how: "desc" },
+	{ name: "алфавиту low", sortProperty: "title", how: "asc" },
+];
+export function Sort() {
+	const dispatch = useDispatch();
+	const sort = useSelector((state) => state.filter.sort);
 	const [open, setOpen] = useState(false);
-	// const [select, setSelect] = useState(0);
-	const list = [
-		{ name: "популярности top", sort: "rating", how: "desc" },
-		{ name: "популярности low", sort: "rating", how: "asc" },
-		{ name: "цене top", sort: "price", how: "desc" },
-		{ name: "цене low", sort: "price", how: "asc" },
-		{ name: "алфавиту top", sort: "title", how: "desc" },
-		{ name: "алфавиту low", sort: "title", how: "asc" },
-	];
-	function onClickSelect(i) {
-		setSortType(i);
+
+	const onClickSelect = (obj) => {
+		dispatch(setSort(obj));
 		setOpen(false);
-	}
-	// debugger;
+	};
 	return (
 		<div className="sort">
 			<div className="sort__label">
@@ -32,9 +34,7 @@ export function Sort({ sortType, setSortType }) {
 					/>
 				</svg>
 				<b>Сортировка по:</b>
-				<span onClick={() => setOpen((prev) => !prev)}>
-					{sortType.name}
-				</span>
+				<span onClick={() => setOpen((prev) => !prev)}>{sort.name}</span>
 			</div>
 			{open && (
 				<div className="sort__popup">
@@ -43,8 +43,8 @@ export function Sort({ sortType, setSortType }) {
 							<li
 								onClick={() => onClickSelect(item)}
 								className={
-									sortType.sort === item.sort &&
-									sortType.how === item.how
+									sort.sortProperty === item.sortProperty &&
+									sort.how === item.how
 										? "active "
 										: ""
 								}

@@ -2,10 +2,6 @@ import React, { useState } from "react";
 import ItemCategory from "./ItemCategory";
 
 export function Categories({ categoryId, setCategoryId }) {
-	// const [activeIndex, setActicveInxdex] = useState(1);
-	// const onClickCategory = (index) => {
-	// 	setCategoryId(index);
-	// };
 	const categories = ["all", "meat", "vegan", "greal", "spicy", "closed"];
 	return (
 		<div className="categories">
