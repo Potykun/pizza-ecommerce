@@ -6,11 +6,14 @@ import Skeleton from "../components/PizzaBlock/Skeleton";
 import Paginnation from "../components/Paginnation/Paginnation";
 import { SearchContext } from "../App";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategoryId } from "../redux/slices/filterSlice";
+import { setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
+import axios from "axios";
 
 export default function Home() {
 	const dispatch = useDispatch();
-	const { categoryId, sort } = useSelector((state) => state.filter);
+	const { categoryId, sort, currentPage } = useSelector(
+		(state) => state.filter
+	);
 	const sortType = sort;
 	// const categoryId = useSelector((state) => {
 	// 	return state.filter.categoryId;
@@ -21,7 +24,7 @@ export default function Home() {
 	};
 	const [items, setItems] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
-	const [curPage, setCurPage] = useState(1);
+	// const [curPage, setCurPage] = useState(1);
 
 	const { searchValue } = useContext(SearchContext);
 	const skeleton = [...new Array(6)].map((_, i) => (
@@ -33,24 +36,27 @@ export default function Home() {
 			{...pizza}
 		></PizzaBLock>
 	));
+	const onChangePage = (num) => {
+		dispatch(setCurrentPage(num));
+	};
 	useEffect(() => {
-		try {
-			setIsLoading(false);
-			const search = searchValue ? `search=${searchValue}` : "";
+		setIsLoading(false);
+		const search = searchValue ? `search=${searchValue}` : "";
 
-			fetch(
-				`https:65aeab521dfbae409a75506c.mockapi.io/items?page=${curPage}&limit=4&${
+		axios
+			.get(
+				`https:65aeab521dfbae409a75506c.mockapi.io/items?page=${currentPage}&limit=4&${
 					categoryId > 0 ? `category=${categoryId}` : ""
 				}${search}&sortBy=${sortType.sortProperty}&order=${sortType.how}`
 			)
-				.then((res) => res.json())
-				.then((arr) => (arr === "Not found" ? setItems([]) : setItems(arr)))
-				.then(() => setIsLoading(true));
-		} catch (error) {
-			console.log(error);
-		}
+			.then((res) => {
+				// console.log(res);
+				setItems(res.data);
+				setIsLoading(true);
+			});
+
 		window.scrollTo(0, 0);
-	}, [categoryId, sortType, searchValue, curPage]);
+	}, [categoryId, sortType, searchValue, currentPage]);
 	return (
 		<div className="content">
 			<div className="container">
@@ -66,7 +72,10 @@ export default function Home() {
 					{!isLoading ? skeleton : pizzas}
 				</div>
 			</div>
-			<Paginnation setCurPage={setCurPage}></Paginnation>
+			<Paginnation
+				currentPage={currentPage}
+				setCurPage={onChangePage}
+			></Paginnation>
 		</div>
 	);
 }

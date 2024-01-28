@@ -6,13 +6,13 @@ import Card from "./pages/Card";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createContext, useState } from "react";
 
-export const SearchContext = createContext();
+export const SearchContext = createContext(null);
 
 function App() {
-	const [searchValue, setSearchValue] = useState();
+	const [searchValue, setSearchValue] = useState("");
 	//
 	return (
-		<SearchContext.Provider value={(searchValue, setSearchValue)}>
+		<SearchContext.Provider value={{ searchValue, setSearchValue }}>
 			<Router>
 				<div className="wrapper">
 					<Header></Header>
