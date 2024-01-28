@@ -3,32 +3,35 @@ import "./scss/app.scss";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Card from "./pages/Card";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { createContext, useState } from "react";
 
-export const SearchContext = createContext(null);
+export const SearchContext = createContext();
 
 function App() {
-	const [searchValue, setSearchValue] = useState("");
+	const [searchValue, setSearchValue] = useState();
 	//
 	return (
 		<SearchContext.Provider value={{ searchValue, setSearchValue }}>
-			<Router>
+			<BrowserRouter>
 				<div className="wrapper">
 					<Header></Header>
-					<Switch>
-						<Route path="/card">
-							<Card></Card>
-						</Route>
-						<Route path="/home">
-							<Home></Home>
-						</Route>
-						<Route path="*">
-							<NotFound></NotFound>
-						</Route>
-					</Switch>
+					<Routes>
+						<Route
+							path="/card"
+							element={<Card></Card>}
+						></Route>
+						<Route
+							path="/"
+							element={<Home></Home>}
+						></Route>
+						<Route
+							path="*"
+							element={<NotFound></NotFound>}
+						></Route>
+					</Routes>
 				</div>
-			</Router>
+			</BrowserRouter>
 		</SearchContext.Provider>
 	);
 }

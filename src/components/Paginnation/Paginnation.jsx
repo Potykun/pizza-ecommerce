@@ -2,7 +2,6 @@ import React from "react";
 import ReactPaginate from "react-paginate";
 import Styels from "./Paginnation.module.scss";
 export default function Paginnation({ currentPage, setCurPage }) {
-	console.log(setCurPage);
 	return (
 		<ReactPaginate
 			className={Styels.root}
