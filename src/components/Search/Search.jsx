@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import styles from "./Search.module.scss";
 import { SearchContext } from "../../App";
 import debounce from "lodash.debounce";

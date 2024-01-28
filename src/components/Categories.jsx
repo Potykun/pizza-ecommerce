@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ItemCategory from "./ItemCategory";
 
 export function Categories({ categoryId, setCategoryId }) {
