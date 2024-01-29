@@ -7,13 +7,6 @@ export const cardSlice = createSlice({
 		items: [],
 	},
 	reducers: {
-		// addItem(state, action) {
-		// 	state.items.push(action.payload);
-		// 	state.totalPrice = state.items.reduce(
-		// 		(prev, obj) => prev + obj.price,
-		// 		0
-		// 	);
-		// },
 		addItem(state, action) {
 			const findItems = state.items.find((obj) => obj.id === action.payload.id);
 
@@ -42,7 +35,7 @@ export const cardSlice = createSlice({
 		},
 	},
 });
-
+export const selectCard = (state) => state.card;
 // Action creators are generated for each case reducer function
 export const { addItem, removeItem, clearItems, minusItem } = cardSlice.actions;
 

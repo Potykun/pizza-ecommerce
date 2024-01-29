@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../../redux/slices/cardSlice";
+import { selectCartItemById } from "../../redux/slices/pizzaSlice";
 
 const tymeNames = ["тонкое", "традиционное"];
 
 export default function PizzaBLock({ id, title, price, imageUrl, sizes, types }) {
 	const dispatch = useDispatch();
-	const cartItem = useSelector((state) => state.card.items.find((obj) => obj.id === id));
+	const cartItem = useSelector(selectCartItemById(id));
 
 	const [activeType, setActiveType] = useState(0);
 	const [activeSize, setActiveSize] = useState(0);

@@ -6,10 +6,10 @@ import Skeleton from "../components/PizzaBlock/Skeleton";
 import Paginnation from "../components/Paginnation/Paginnation";
 import { SearchContext } from "../App";
 import { useDispatch, useSelector } from "react-redux";
-import { setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
+import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
-import { fetchPizzas } from "../redux/slices/pizzaSlice";
+import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice";
 
 export default function Home() {
 	const navigate = useNavigate();
@@ -17,15 +17,10 @@ export default function Home() {
 	const isSerched = useRef(false);
 	const isMounted = useRef(false);
 
-	const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
-	const pizzaItems = useSelector((state) => state.pizza.items);
-	const { status } = useSelector((state) => state.pizza);
+	const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
+	const pizzaItems = useSelector(selectPizzaItems);
+	const { status } = useSelector(selectPizzaStatus);
 
-	const onChangeCategory = (id) => {
-		dispatch(setCategoryId(id));
-	};
-
-	const { searchValue } = useContext(SearchContext);
 	const skeleton = [...new Array(6)].map((_, i) => <Skeleton key={i}></Skeleton>);
 
 	const pizzas = pizzaItems.map((pizza, i) => (
@@ -37,6 +32,9 @@ export default function Home() {
 
 	const onChangePage = (num) => {
 		dispatch(setCurrentPage(num));
+	};
+	const onChangeCategory = (id) => {
+		dispatch(setCategoryId(id));
 	};
 
 	const getPizzas = async () => {
@@ -91,7 +89,7 @@ export default function Home() {
 				{status === "error" ? (
 					<div>
 						<h2>
-							Error appear, Epmty <icon>😕</icon>
+							Error appear, Epmty <i>😕</i>
 						</h2>
 					</div>
 				) : (
