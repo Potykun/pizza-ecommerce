@@ -10,6 +10,7 @@ import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redu
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice";
+import { Link } from "react-router-dom";
 
 export default function Home() {
 	const navigate = useNavigate();
@@ -24,10 +25,12 @@ export default function Home() {
 	const skeleton = [...new Array(6)].map((_, i) => <Skeleton key={i}></Skeleton>);
 
 	const pizzas = pizzaItems.map((pizza, i) => (
-		<PizzaBLock
+		<Link
 			key={i}
-			{...pizza}
-		></PizzaBLock>
+			to={`pizza/${pizza.id}`}
+		>
+			<PizzaBLock {...pizza}></PizzaBLock>
+		</Link>
 	));
 
 	const onChangePage = (num) => {

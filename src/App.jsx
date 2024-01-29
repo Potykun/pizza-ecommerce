@@ -3,8 +3,8 @@ import "./scss/app.scss";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Card from "./pages/Card";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { createContext, useState } from "react";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import FullPizza from "./pages/FullPizza";
 
 function App() {
 	//
@@ -20,6 +20,10 @@ function App() {
 					<Route
 						path="/"
 						element={<Home></Home>}
+					></Route>
+					<Route
+						path="/pizza/:id"
+						element={<FullPizza></FullPizza>}
 					></Route>
 					<Route
 						path="*"
