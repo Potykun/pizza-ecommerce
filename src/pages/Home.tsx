@@ -5,10 +5,10 @@ import PizzaBLock from "../components/PizzaBlock/PizzaBLock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Paginnation from "../components/Paginnation/Paginnation";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice.js";
+import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
-import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice.js";
+import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice";
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();

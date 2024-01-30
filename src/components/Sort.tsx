@@ -4,8 +4,8 @@ import { selectSort, setSort } from "../redux/slices/filterSlice";
 
 type SortListType = {
 	name: string;
-	sortProperty: string;
-	how: string;
+	sortProperty: "rating" | "title" | "price";
+	how: "desc" | "asc";
 };
 
 export const list: SortListType[] = [
