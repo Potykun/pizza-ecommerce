@@ -29,7 +29,7 @@ export default function Header() {
 				<Search></Search>
 
 				<div className="header__cart">
-					{location.pathname != "/card" && (
+					{location.pathname !== "/card" && (
 						<Link
 							className="button button--cart"
 							to="/card"

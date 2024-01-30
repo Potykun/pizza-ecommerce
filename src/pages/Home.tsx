@@ -4,15 +4,16 @@ import Categories from "../components/Categories";
 import PizzaBLock from "../components/PizzaBlock/PizzaBLock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Paginnation from "../components/Paginnation/Paginnation";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice";
+import { useAppDispatch } from "../redux/store";
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const isSerched = useRef(false);
 	const isMounted = useRef(false);
 
@@ -39,10 +40,7 @@ const Home: React.FC = () => {
 	const getPizzas = async () => {
 		const search = searchValue ? `search=${searchValue}` : "";
 
-		dispatch(
-			// @ts-ignore
-			fetchPizzas({ search, currentPage, categoryId, sort })
-		);
+		dispatch(fetchPizzas({ search, currentPage: String(currentPage), categoryId: String(currentPage), sort }));
 	};
 
 	useEffect(() => {
@@ -75,6 +73,9 @@ const Home: React.FC = () => {
 			navigate(`?${queryString}`);
 		}
 		isMounted.current = true;
+		if (!window.location.search) {
+			// dispatch(fetchPizzas({}));
+		}
 	}, [categoryId, sort, currentPage]);
 
 	return (
