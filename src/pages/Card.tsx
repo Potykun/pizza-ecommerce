@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import ItemCart from "../components/ItemCart.tsx";
-import { clearItems, selectCard } from "../redux/slices/cardSlice";
-import CardEmpty from "../components/CardEmpty.tsx";
+import ItemCart from "../components/ItemCart.js";
+import { clearItems, selectCard } from "../redux/slices/cardSlice.js";
+import CardEmpty from "../components/CardEmpty.js";
 
-export default function Card() {
+const Card: React.FC = () => {
 	const dispatch = useDispatch();
 	const { totalPrice, items } = useSelector(selectCard);
-	const totalCount = items.reduce((prev, next) => prev + next.count, 0);
+	const totalCount = items.reduce((prev: number, next: any) => prev + next.count, 0);
 
 	const onClickClear = () => {
 		if (window.confirm("Are you sure you want to clear all?")) {
@@ -99,7 +99,7 @@ export default function Card() {
 						</div>
 					</div>
 					<div className="content__items">
-						{items.map((item) => (
+						{items.map((item: any) => (
 							<ItemCart
 								key={item.id}
 								{...item}
@@ -150,4 +150,5 @@ export default function Card() {
 			</div>
 		</>
 	);
-}
+};
+export default Card;

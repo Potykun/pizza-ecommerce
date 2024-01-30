@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from "react";
-import { Sort, list } from "../components/Sort.tsx";
-import Categories from "../components/Categories.tsx";
-import PizzaBLock from "../components/PizzaBlock/PizzaBLock.tsx";
-import Skeleton from "../components/PizzaBlock/Skeleton.tsx";
-import Paginnation from "../components/Paginnation/Paginnation.tsx";
+import { Sort, list } from "../components/Sort.js";
+import Categories from "../components/Categories.js";
+import PizzaBLock from "../components/PizzaBlock/PizzaBLock.js";
+import Skeleton from "../components/PizzaBlock/Skeleton.js";
+import Paginnation from "../components/Paginnation/Paginnation.js";
 import { useDispatch, useSelector } from "react-redux";
-import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
+import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice.js";
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
-import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice";
+import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice.js";
 import { Link } from "react-router-dom";
 
-export default function Home() {
+const Home: React.FC = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const isSerched = useRef(false);
@@ -23,7 +23,7 @@ export default function Home() {
 
 	const skeleton = [...new Array(6)].map((_, i) => <Skeleton key={i}></Skeleton>);
 
-	const pizzas = pizzaItems.map((pizza, i) => (
+	const pizzas = pizzaItems.map((pizza: any, i: number) => (
 		<Link
 			key={i}
 			to={`pizza/${pizza.id}`}
@@ -32,22 +32,25 @@ export default function Home() {
 		</Link>
 	));
 
-	const onChangePage = (num) => {
+	const onChangePage = (num: number) => {
 		dispatch(setCurrentPage(num));
 	};
-	const onChangeCategory = (id) => {
+	const onChangeCategory = (id: number) => {
 		dispatch(setCategoryId(id));
 	};
 
 	const getPizzas = async () => {
 		const search = searchValue ? `search=${searchValue}` : "";
 
-		dispatch(fetchPizzas({ search, currentPage, categoryId, sort }));
+		dispatch(
+			// @ts-ignore
+			fetchPizzas({ search, currentPage, categoryId, sort })
+		);
 	};
 
 	useEffect(() => {
 		if (window.location.search) {
-			const params = qs.parse(window.location.search.substring(1));
+			const params: any = qs.parse(window.location.search.substring(1));
 			const sort = list.find((obj) => obj.sortProperty === params.sort.sortProperty && obj.how === params.sort.how);
 			dispatch(
 				setFilters({
@@ -104,4 +107,5 @@ export default function Home() {
 			></Paginnation>
 		</div>
 	);
-}
+};
+export default Home;
