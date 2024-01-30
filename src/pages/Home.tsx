@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import { Sort, list } from "../components/Sort.js";
-import Categories from "../components/Categories.js";
-import PizzaBLock from "../components/PizzaBlock/PizzaBLock.js";
-import Skeleton from "../components/PizzaBlock/Skeleton.js";
-import Paginnation from "../components/Paginnation/Paginnation.js";
+import { Sort, list } from "../components/Sort";
+import Categories from "../components/Categories";
+import PizzaBLock from "../components/PizzaBlock/PizzaBLock";
+import Skeleton from "../components/PizzaBlock/Skeleton";
+import Paginnation from "../components/Paginnation/Paginnation";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice.js";
 import { useNavigate } from "react-router-dom";
@@ -24,12 +24,10 @@ const Home: React.FC = () => {
 	const skeleton = [...new Array(6)].map((_, i) => <Skeleton key={i}></Skeleton>);
 
 	const pizzas = pizzaItems.map((pizza: any, i: number) => (
-		<Link
+		<PizzaBLock
 			key={i}
-			to={`pizza/${pizza.id}`}
-		>
-			<PizzaBLock {...pizza}></PizzaBLock>
-		</Link>
+			{...pizza}
+		></PizzaBLock>
 	));
 
 	const onChangePage = (num: number) => {
