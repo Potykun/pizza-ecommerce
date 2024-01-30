@@ -2,7 +2,7 @@ import React from "react";
 
 type ItemCategoryProps = {
 	activeIndex: number;
-	onClickCategory: (index: number) => Function;
+	onClickCategory: (index: number) => void;
 	index: number;
 	item: string;
 };

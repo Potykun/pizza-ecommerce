@@ -4,7 +4,7 @@ import Styels from "./Paginnation.module.scss";
 
 type PaginnationProps = {
 	currentPage: number;
-	setCurPage: any;
+	setCurPage: (page: number) => void;
 };
 
 const Paginnation: React.FC<PaginnationProps> = ({ currentPage, setCurPage }) => {

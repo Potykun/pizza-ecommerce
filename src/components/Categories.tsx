@@ -3,11 +3,11 @@ import ItemCategory from "./ItemCategory";
 
 type CategoriesProps = {
 	categoryId: number;
-	setCategoryId: any;
+	setCategoryId: (i: number) => void;
 };
 
+const categories = ["all", "meat", "vegan", "greal", "spicy", "closed"];
 const Categories: React.FC<CategoriesProps> = ({ categoryId, setCategoryId }) => {
-	const categories = ["all", "meat", "vegan", "greal", "spicy", "closed"];
 	return (
 		<div className="categories">
 			<ul className="categories__list">
@@ -16,7 +16,7 @@ const Categories: React.FC<CategoriesProps> = ({ categoryId, setCategoryId }) =>
 						<ItemCategory
 							key={index}
 							activeIndex={categoryId}
-							onClickCategory={(index: number) => setCategoryId(index)}
+							onClickCategory={(index) => setCategoryId(index)}
 							index={index}
 							item={item}
 						></ItemCategory>

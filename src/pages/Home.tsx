@@ -9,7 +9,6 @@ import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redu
 import { useNavigate } from "react-router-dom";
 import qs from "qs";
 import { fetchPizzas, selectPizzaItems, selectPizzaStatus } from "../redux/slices/pizzaSlice.js";
-import { Link } from "react-router-dom";
 
 const Home: React.FC = () => {
 	const navigate = useNavigate();
