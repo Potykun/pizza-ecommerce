@@ -5,11 +5,11 @@ import Search from "./Search/Search";
 import { useSelector } from "react-redux";
 import { selectCard } from "../redux/slices/cardSlice";
 
-export function Header() {
+export default function Header() {
 	const { items, totalPrice } = useSelector(selectCard);
 	const location = useLocation();
 
-	const totalCount = items.reduce((prev, next) => prev + next.count, 0);
+	const totalCount = items.reduce((prev: number, next: any) => prev + next.count, 0);
 	return (
 		<div className="header">
 			<div className="container">

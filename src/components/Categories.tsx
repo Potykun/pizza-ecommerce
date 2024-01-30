@@ -1,17 +1,22 @@
 import React from "react";
 import ItemCategory from "./ItemCategory";
 
-export function Categories({ categoryId, setCategoryId }) {
+type CategoriesProps = {
+	categoryId: number;
+	setCategoryId: any;
+};
+
+const Categories: React.FC<CategoriesProps> = ({ categoryId, setCategoryId }) => {
 	const categories = ["all", "meat", "vegan", "greal", "spicy", "closed"];
 	return (
 		<div className="categories">
 			<ul className="categories__list">
-				{categories.map((item, index) => {
+				{categories.map((item, index: number) => {
 					return (
 						<ItemCategory
 							key={index}
 							activeIndex={categoryId}
-							onClickCategory={(index) => setCategoryId(index)}
+							onClickCategory={(index: number) => setCategoryId(index)}
 							index={index}
 							item={item}
 						></ItemCategory>
@@ -20,4 +25,5 @@ export function Categories({ categoryId, setCategoryId }) {
 			</ul>
 		</div>
 	);
-}
+};
+export default Categories;

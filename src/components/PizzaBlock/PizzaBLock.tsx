@@ -5,7 +5,17 @@ import { selectCartItemById } from "../../redux/slices/pizzaSlice";
 
 const tymeNames = ["тонкое", "традиционное"];
 
-export default function PizzaBLock({ id, title, price, imageUrl, sizes, types }) {
+type PizzaBLockProps = {
+	id: string;
+	title: string;
+	price: number;
+	imageUrl: string;
+	sizes: number[];
+	types: number[];
+	rating: number;
+};
+
+const PizzaBLock: React.FC<PizzaBLockProps> = ({ id, title, price, imageUrl, sizes, types }) => {
 	const dispatch = useDispatch();
 	const cartItem = useSelector(selectCartItemById(id));
 
@@ -23,10 +33,10 @@ export default function PizzaBLock({ id, title, price, imageUrl, sizes, types })
 		};
 		dispatch(addItem(item));
 	};
-	const onChangeType = (index) => {
+	const onChangeType = (index: number) => {
 		setActiveType(index);
 	};
-	const onChangeSize = (index) => {
+	const onChangeSize = (index: number) => {
 		setActiveSize(index);
 	};
 	return (
@@ -48,8 +58,6 @@ export default function PizzaBLock({ id, title, price, imageUrl, sizes, types })
 							{tymeNames[type]}
 						</li>
 					))}
-					{/* <li className="active">тонкое</li>
-					<li>традиционное</li> */}
 				</ul>
 				<ul>
 					{sizes.map((size, i) => (
@@ -61,9 +69,6 @@ export default function PizzaBLock({ id, title, price, imageUrl, sizes, types })
 							{size} см.
 						</li>
 					))}
-					{/* <li className="active">26 см.</li>
-					<li>30 см.</li>
-					<li>40 см.</li> */}
 				</ul>
 			</div>
 			<div className="pizza-block__bottom">
@@ -90,4 +95,6 @@ export default function PizzaBLock({ id, title, price, imageUrl, sizes, types })
 			</div>
 		</div>
 	);
-}
+};
+
+export default PizzaBLock;

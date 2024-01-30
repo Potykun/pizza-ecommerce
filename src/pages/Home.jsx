@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { Sort, list } from "../components/Sort";
-import { Categories } from "../components/Categories";
-import PizzaBLock from "../components/PizzaBlock/PizzaBLock";
-import Skeleton from "../components/PizzaBlock/Skeleton";
-import Paginnation from "../components/Paginnation/Paginnation";
-import { SearchContext } from "../App";
+import React, { useEffect, useRef } from "react";
+import { Sort, list } from "../components/Sort.tsx";
+import Categories from "../components/Categories.tsx";
+import PizzaBLock from "../components/PizzaBlock/PizzaBLock.tsx";
+import Skeleton from "../components/PizzaBlock/Skeleton.tsx";
+import Paginnation from "../components/Paginnation/Paginnation.tsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter, setCategoryId, setCurrentPage, setFilters } from "../redux/slices/filterSlice";
 import { useNavigate } from "react-router-dom";

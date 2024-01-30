@@ -1,10 +1,11 @@
-import { Header } from "./components/Header";
-import "./scss/app.scss";
+import React from "react";
+import Header from "./components/Header";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Card from "./pages/Card";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import FullPizza from "./pages/FullPizza";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./scss/app.scss";
 
 function App() {
 	//
