@@ -26,21 +26,6 @@ export function Sort() {
 		dispatch(setSort(obj));
 		setOpen(false);
 	};
-	// useEffect(() => {
-	// 	const handleClickOutside = (event: React.MouseEvent<Element, MouseEvent>) => {
-	// 		// const path = event.composedPath();
-	// 		// if (!path.includes(sortRef.current)) {
-	// 		// 	setOpen(false);
-	// 		// }
-	// 		if (sortRef.current && !event.composedPath().includes(sortRef.current)) {
-	// 			setOpen(false);
-	// 		}
-	// 	};
-	// 	document.body.addEventListener("click", handleClickOutside);
-	// 	return () => {
-	// 		document.body.removeEventListener("click", handleClickOutside);
-	// 	};
-	// }, []);
 
 	useEffect(() => {
 		const handleClickOutside: EventListenerOrEventListenerObject = (event: Event) => {

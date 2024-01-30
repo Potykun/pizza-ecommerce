@@ -1,13 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../store";
+
+export type CardItemType = {
+	id: string;
+	title: string;
+	price: number;
+	imageUrl: string;
+	size: number;
+	type: string;
+	count: number;
+};
+interface CardSliceState {
+	totalPrice: number;
+	items: CardItemType[];
+}
+const initialState: CardSliceState = {
+	totalPrice: 0,
+	items: [],
+};
 
 export const cardSlice = createSlice({
 	name: "card",
-	initialState: {
-		totalPrice: 0,
-		items: [],
-	},
+	initialState,
 	reducers: {
-		addItem(state, action) {
+		addItem(state, action: PayloadAction<CardItemType>) {
 			const findItems = state.items.find((obj) => obj.id === action.payload.id);
 
 			if (findItems) {
@@ -18,14 +34,14 @@ export const cardSlice = createSlice({
 			state.totalPrice = state.items.reduce((prev, obj) => prev + obj.price * obj.count, 0);
 		},
 
-		minusItem(state, action) {
+		minusItem(state, action: PayloadAction<string>) {
 			const findItems = state.items.find((obj) => obj.id === action.payload);
 			if (findItems) {
 				findItems.count--;
 			}
 			state.totalPrice = state.items.reduce((prev, obj) => prev + obj.price * obj.count, 0);
 		},
-		removeItem(state, action) {
+		removeItem(state, action: PayloadAction<string>) {
 			state.items = state.items.filter((obj) => obj.id !== action.payload);
 			state.totalPrice = state.items.reduce((prev, obj) => prev + obj.price * obj.count, 0);
 		},
@@ -35,7 +51,7 @@ export const cardSlice = createSlice({
 		},
 	},
 });
-export const selectCard = (state) => state.card;
+export const selectCard = (state: RootState) => state.card;
 // Action creators are generated for each case reducer function
 export const { addItem, removeItem, clearItems, minusItem } = cardSlice.actions;
 

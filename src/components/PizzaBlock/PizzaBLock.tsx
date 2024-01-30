@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../redux/slices/cardSlice";
+import { CardItemType, addItem } from "../../redux/slices/cardSlice";
 import { selectCartItemById } from "../../redux/slices/pizzaSlice";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,6 @@ type PizzaBLockProps = {
 	imageUrl: string;
 	sizes: number[];
 	types: number[];
-	rating: number;
 };
 
 const PizzaBLock: React.FC<PizzaBLockProps> = ({ id, title, price, imageUrl, sizes, types }) => {
@@ -24,13 +23,14 @@ const PizzaBLock: React.FC<PizzaBLockProps> = ({ id, title, price, imageUrl, siz
 	const [activeSize, setActiveSize] = useState(0);
 	const addedCount = cartItem ? cartItem.count : 0;
 	const onClickAdd = () => {
-		const item = {
+		const item: CardItemType = {
 			id,
 			title,
 			price,
 			imageUrl,
 			type: tymeNames[activeType],
 			size: sizes[activeSize],
+			count: 0,
 		};
 		dispatch(addItem(item));
 	};
