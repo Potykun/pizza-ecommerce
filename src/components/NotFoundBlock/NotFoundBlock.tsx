@@ -4,7 +4,7 @@ import styles from "./NotFoundBlock.module.scss";
 const NotFoundBlock: React.FC = () => {
 	return (
 		<div>
-			<h1 className={styles.root}> Nothink is found </h1>
+			<h1 className={styles.root}>Sorry, nothink is found. </h1>
 		</div>
 	);
 };

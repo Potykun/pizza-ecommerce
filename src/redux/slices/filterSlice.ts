@@ -18,7 +18,7 @@ const initialState: FilterSliceType = {
 	categoryId: 0,
 	currentPage: 1,
 	sort: {
-		name: "популярности",
+		name: "popular",
 		sortProperty: "rating",
 		how: "desc",
 	},

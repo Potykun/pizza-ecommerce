@@ -4,7 +4,7 @@ import { CardItemType, addItem } from "../../redux/slices/cardSlice";
 import { selectCartItemById } from "../../redux/slices/pizzaSlice";
 import { Link } from "react-router-dom";
 
-const tymeNames = ["тонкое", "традиционное"];
+const tymeNames = ["thin", "traditional"];
 
 type PizzaBLockProps = {
 	id: string;
@@ -69,13 +69,13 @@ const PizzaBLock: React.FC<PizzaBLockProps> = ({ id, title, price, imageUrl, siz
 							className={activeSize === i ? "active" : ""}
 							onClick={() => onChangeSize(i)}
 						>
-							{size} см.
+							{size} cm.
 						</li>
 					))}
 				</ul>
 			</div>
 			<div className="pizza-block__bottom">
-				<div className="pizza-block__price">от {price} ₽</div>
+				<div className="pizza-block__price">from {price} $</div>
 				<button
 					onClick={onClickAdd}
 					className="button button--outline button--add"
@@ -92,7 +92,7 @@ const PizzaBLock: React.FC<PizzaBLockProps> = ({ id, title, price, imageUrl, siz
 							fill="white"
 						/>
 					</svg>
-					<span>Добавить</span>
+					<span>Add</span>
 					{addedCount > 0 && <i>{addedCount}</i>}
 				</button>
 			</div>

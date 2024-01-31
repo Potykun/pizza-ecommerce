@@ -22,7 +22,7 @@ const ItemCart: React.FC<ItemCartProps> = ({ id, title, type, price, count, imag
 		dispatch(minusItem(id));
 	};
 	const onClickRemove = () => {
-		if (window.confirm("Are you sure you want to remove?")) {
+		if (window.confirm("Are you sure that you want to remove?")) {
 			dispatch(removeItem(id));
 		}
 	};
@@ -38,7 +38,7 @@ const ItemCart: React.FC<ItemCartProps> = ({ id, title, type, price, count, imag
 			<div className="cart__item-info">
 				<h3>{title}</h3>
 				<p>
-					{type}, {size}см.
+					{type}, {size}cm.
 				</p>
 			</div>
 			<div className="cart__item-count">
@@ -87,7 +87,7 @@ const ItemCart: React.FC<ItemCartProps> = ({ id, title, type, price, count, imag
 				</div>
 			</div>
 			<div className="cart__item-price">
-				<b>{price * count} ₽</b>
+				<b>{price * count} $</b>
 			</div>
 			<div
 				onClick={onClickRemove}

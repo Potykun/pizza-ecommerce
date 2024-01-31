@@ -8,8 +8,7 @@
 	min-width: 100px;
 	text-align: center;
 	cursor: pointer;
-	transition: background-color $duration ease-in-out,
-		border-color $duration ease-in-out;
+	transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
 	border: 1px solid transparent;
 	@include noselect();
 
@@ -95,6 +94,10 @@
 		margin-left: 14px;
 		margin-right: 14px;
 	}
+	&__totalPrice {
+		display: flex;
+		align-items: center;
+	}
 
 	&--add {
 		svg {
@@ -142,6 +145,8 @@
 		}
 
 		span {
+			text-wrap: nowrap;
+			min-width: 20px;
 			font-weight: 600;
 			font-size: 16px;
 		}

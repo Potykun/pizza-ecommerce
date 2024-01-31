@@ -332,12 +332,13 @@ body {
 
 	&--empty {
 		margin: 60px auto;
-		width: 650px;
+		max-width: 650px;
 		text-align: center;
 		padding-bottom: 60px;
 
 		h2 {
 			font-size: 36px;
+			line-height: 42px;
 			margin-bottom: 10px;
 			font-weight: 700;
 		}
@@ -356,7 +357,7 @@ body {
 
 		img {
 			display: block;
-			width: 300px;
+			max-width: 100%;
 			margin: 45px auto 60px;
 		}
 

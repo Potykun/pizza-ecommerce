@@ -1,10 +1,10 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../store";
-type FetchPizzaArg = {
+export type FetchPizzaArg = {
 	search: string;
 	currentPage: string;
-	categoryId: string;
+	categoryId: number;
 	sort: {
 		how: string;
 		sortProperty: string;

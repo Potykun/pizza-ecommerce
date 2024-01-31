@@ -40,7 +40,7 @@ const Home: React.FC = () => {
 	const getPizzas = async () => {
 		const search = searchValue ? `search=${searchValue}` : "";
 
-		dispatch(fetchPizzas({ search, currentPage: String(currentPage), categoryId: String(currentPage), sort }));
+		dispatch(fetchPizzas({ search, currentPage: String(currentPage), categoryId, sort }));
 	};
 
 	useEffect(() => {
@@ -88,11 +88,12 @@ const Home: React.FC = () => {
 					/>
 					<Sort />
 				</div>
-				<h2 className="content__title">Все пиццы</h2>
+				<h2 className="content__title">All pizzas</h2>
+
 				{status === "error" ? (
 					<div>
 						<h2>
-							Error appear, Epmty <i>😕</i>
+							Error appear, Epmty <br /> <i>😕</i>
 						</h2>
 					</div>
 				) : (

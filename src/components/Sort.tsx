@@ -9,12 +9,12 @@ type SortListType = {
 };
 
 export const list: SortListType[] = [
-	{ name: "популярности top", sortProperty: "rating", how: "desc" },
-	{ name: "популярности low", sortProperty: "rating", how: "asc" },
-	{ name: "цене top", sortProperty: "price", how: "desc" },
-	{ name: "цене low", sortProperty: "price", how: "asc" },
-	{ name: "алфавиту top", sortProperty: "title", how: "desc" },
-	{ name: "алфавиту low", sortProperty: "title", how: "asc" },
+	{ name: "popular", sortProperty: "rating", how: "desc" },
+	{ name: "popular", sortProperty: "rating", how: "asc" },
+	{ name: "price ", sortProperty: "price", how: "desc" },
+	{ name: "price ", sortProperty: "price", how: "asc" },
+	{ name: "name", sortProperty: "title", how: "desc" },
+	{ name: "name", sortProperty: "title", how: "asc" },
 ];
 export function Sort() {
 	const sortRef = useRef<HTMLDivElement>(null);
@@ -57,10 +57,9 @@ export function Sort() {
 						fill="#2C2C2C"
 					/>
 				</svg>
-				<b>Сортировка по:</b>
+				<b>Sort by:</b>
 				<span onClick={() => setOpen((prev) => !prev)}>
-					{sort.name}
-					{sort.how}
+					{sort.name} {sort.how}
 				</span>
 			</div>
 			{open && (
@@ -72,7 +71,7 @@ export function Sort() {
 								className={sort.sortProperty === item.sortProperty && sort.how === item.how ? "active " : ""}
 								key={i}
 							>
-								{item.name}
+								{item.name} {item.how}
 							</li>
 						))}
 					</ul>
