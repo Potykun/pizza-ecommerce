@@ -13,7 +13,7 @@ export default function Header() {
 	return (
 		<div className="header">
 			<div className="container">
-				<Link to="/">
+				<Link to="/pizza-ecommerce/">
 					<div className="header__logo">
 						<img
 							width="38"
@@ -32,7 +32,7 @@ export default function Header() {
 					{location.pathname !== "/card" && (
 						<Link
 							className="button button--cart"
-							to="/card"
+							to="/pizza-ecommerce/card"
 						>
 							<span>{`${totalPrice} $`}</span>
 							<div className="button__delimiter"></div>

@@ -11,12 +11,22 @@ export type FetchPizzaArg = {
 	};
 };
 
+// export const fetchPizzas = createAsyncThunk("pizza/fetchPizzasStatus", async (params: FetchPizzaArg) => {
+// 	const { search, currentPage, categoryId, sort } = params;
+// 	const { data } = await axios.get<PizzaType[]>(
+// 		`https:65aeab521dfbae409a75506c.mockapi.io/items?page=${currentPage}&limit=4&${
+// 			+categoryId > 0 ? `category=${categoryId}` : ""
+// 		}${search}&sortBy=${sort.sortProperty}&order=${sort.how}`
+// 	);
+// 	return data as PizzaType[];
+// });
+
 export const fetchPizzas = createAsyncThunk("pizza/fetchPizzasStatus", async (params: FetchPizzaArg) => {
 	const { search, currentPage, categoryId, sort } = params;
+	const baseUrl = "https://65aeab521dfbae409a75506c.mockapi.io"; // Base URL
+	const categoryParam = categoryId > 0 ? `&category=${categoryId}` : ""; // Category parameter
 	const { data } = await axios.get<PizzaType[]>(
-		`https:65aeab521dfbae409a75506c.mockapi.io/items?page=${currentPage}&limit=4&${
-			+categoryId > 0 ? `category=${categoryId}` : ""
-		}${search}&sortBy=${sort.sortProperty}&order=${sort.how}`
+		`${baseUrl}/items?page=${currentPage}&limit=4${categoryParam}${search}&sortBy=${sort.sortProperty}&order=${sort.how}`
 	);
 	return data as PizzaType[];
 });

@@ -46,6 +46,7 @@ const Home: React.FC = () => {
 	useEffect(() => {
 		if (window.location.search) {
 			const params: any = qs.parse(window.location.search.substring(1));
+
 			const sort = list.find((obj) => obj.sortProperty === params.sort.sortProperty && obj.how === params.sort.how);
 			dispatch(
 				setFilters({

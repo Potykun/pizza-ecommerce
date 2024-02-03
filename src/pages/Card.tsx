@@ -120,7 +120,7 @@ const Card: React.FC = () => {
 						<div className="cart__bottom-buttons">
 							<Link
 								className="button button--outline button--add go-back-btn"
-								to="/"
+								to="/pizza-ecommerce/"
 							>
 								<svg
 									width="8"

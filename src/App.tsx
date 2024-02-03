@@ -15,19 +15,19 @@ function App() {
 				<Header></Header>
 				<Routes>
 					<Route
-						path="/card"
+						path="/pizza-ecommerce/card"
 						element={<Card></Card>}
 					></Route>
 					<Route
-						path="/"
+						path="/pizza-ecommerce/"
 						element={<Home></Home>}
 					></Route>
 					<Route
-						path="/pizza/:id"
+						path="/pizza-ecommerce/pizza/:id"
 						element={<FullPizza></FullPizza>}
 					></Route>
 					<Route
-						path="*"
+						path="/pizza-ecommerce/*"
 						element={<NotFound></NotFound>}
 					></Route>
 				</Routes>
