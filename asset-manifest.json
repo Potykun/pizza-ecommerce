@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pizza-ecommerce/static/css/main.4072d1af.css",
-    "main.js": "/pizza-ecommerce/static/js/main.cf169aa5.js",
+    "main.css": "/pizza-ecommerce/static/css/main.fd9ddeb4.css",
+    "main.js": "/pizza-ecommerce/static/js/main.528d915a.js",
     "static/media/empty-cart.png": "/pizza-ecommerce/static/media/empty-cart.db905d1f4b063162f25b.png",
     "static/media/pizza-logo.svg": "/pizza-ecommerce/static/media/pizza-logo.56ac87032d8f6fdf863326acd06c0d97.svg",
     "index.html": "/pizza-ecommerce/index.html",
-    "main.4072d1af.css.map": "/pizza-ecommerce/static/css/main.4072d1af.css.map",
-    "main.cf169aa5.js.map": "/pizza-ecommerce/static/js/main.cf169aa5.js.map"
+    "main.fd9ddeb4.css.map": "/pizza-ecommerce/static/css/main.fd9ddeb4.css.map",
+    "main.528d915a.js.map": "/pizza-ecommerce/static/js/main.528d915a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4072d1af.css",
-    "static/js/main.cf169aa5.js"
+    "static/css/main.fd9ddeb4.css",
+    "static/js/main.528d915a.js"
   ]
 }
